@@ -35,12 +35,18 @@ public class Service {
         return repository.getOrderCountByPartnerId(partnerId);
     }
 
-    List<Order> getOrdersByPartnerId(String partnerId){
-        return repository.getOrdersByPartnerId(partnerId);
+    List<String> getOrdersByPartnerId(String partnerId){
+        List<Order> orderList = repository.getOrdersByPartnerId(partnerId);
+        List<String> stringList = new ArrayList<>();
+        for(Order order:orderList) stringList.add(order.getId());
+        return stringList;
     }
 
-    List<Order> getAllOrders(){
-        return repository.getAllOrders();
+    List<String> getAllOrders(){
+        List<Order> orderList = repository.getAllOrders();
+        List<String> stringList = new ArrayList<>();
+        for(Order order:orderList) stringList.add(order.getId());
+        return stringList;
     }
 
     int getCountOfUnassignedOrders(){
